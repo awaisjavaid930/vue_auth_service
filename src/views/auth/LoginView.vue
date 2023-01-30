@@ -6,23 +6,27 @@
                     <v-img max-height="150" max-width="250" src="@/assets/cycle.gif"></v-img>
                 </h3>
                 <form @submit.prevent="login">
-                    <v-text-field v-model="formData.email" label="E-mail">
-                    </v-text-field>
+                
+                    <v-text-field v-model="formData.email" label="E-mail"></v-text-field>
+
                     <v-text-field type="password" dense outlined v-model="formData.password" label="Password">
                     </v-text-field>
 
-                    <v-btn type="submit" color="primary" class="mb-5 mr-4" @click="submit">
+                    <v-btn type="submit" color="primary" class="mb-5 mr-4">
                         Login
                     </v-btn>
                     <v-btn to="/register" class="mb-5" depressed color="error">
                         Register
                     </v-btn>
+                    
                 </form>
             </v-card>
         </v-row>
     </v-container>
 </template>
 <script>
+import { useAuthStore } from '@/store/auth';
+
 export default {
     name: 'LoginView',
     data:() => ({
@@ -34,7 +38,8 @@ export default {
     methods: {
         login()
         {
-            console.log(this.formData)  
+            const userAuth = useAuthStore();
+            console.log(userAuth.getData())
         }
     },
 }
