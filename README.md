@@ -1,4 +1,4 @@
-# auth_service
+# Pinia Store Integrated, Vue Js, Auth Layout, Axios Integrated, Vuetify Integrated and ENV
 
 ## Project setup
 ```
