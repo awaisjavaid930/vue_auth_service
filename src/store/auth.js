@@ -10,15 +10,28 @@ export const useAuthStore = defineStore('userAuth', {
     },
     
     actions: {
-        async getData()
+        async getData(url)
         {
-            return "dfd";
-        },
+            return await axios.get(process.env.VUE_APP_API_URL+'/'+url, 
+            {
+                headers: {
+                    'Authorization':`Bearer ${localStorage.getItem("token")}`,
+                }
+            })
+            .then(response => {
+                return Promise.resolve(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    },
         
         async saveRecord(url, data)
         {
-            return  axios.post(process.env.VUE_APP_API_URL+'/'+url , data )
+            return  await axios.post(process.env.VUE_APP_API_URL+'/'+url , data )
                 .then(response => {
+                    this.token = response.data.data.token ;
+                    localStorage.setItem('token',  response.data.data.token)
                     return  Promise.resolve(response.data)
                 })
                 .catch(error => {

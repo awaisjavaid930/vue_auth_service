@@ -41,7 +41,7 @@ export default {
             const userAuth = useAuthStore();
             userAuth.saveRecord('login' , this.formData)
                 .then(response => {
-                    localStorage.setItem('token',response.data.token)
+                    console.log(response)
                     this.$router.push('/about')
                 })
                 .catch(error => {
