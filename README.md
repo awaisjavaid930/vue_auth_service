@@ -1,4 +1,4 @@
-# Pinia Store, Auth Layout, Axios, Vuetify & ENV
+# Pinia Store, Auth Layout, Axios, Vuetify & ENV Starter KIT
 
 ## Project setup
 ```
