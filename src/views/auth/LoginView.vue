@@ -39,7 +39,14 @@ export default {
         login()
         {
             const userAuth = useAuthStore();
-            console.log(userAuth.getData())
+            userAuth.saveRecord('login' , this.formData)
+                .then(response => {
+                    localStorage.setItem('token',response.data.token)
+                    this.$router.push('/about')
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
     },
 }

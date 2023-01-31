@@ -1,17 +1,12 @@
 <template>
     <v-container>
-        <v-row align="right" justify="space-around">
-            <v-btn to="/register" depressed color="primary" right>
+        <v-row align="right" justify="space-around" class="float-right">
+            <v-btn to="/register" depressed color="primary" class="float-right mx-2">
                 Register
             </v-btn>
-            <v-btn to="/login" depressed color="primary">
+            <v-btn to="/login" depressed color="primary" class="float-right mx-2">
                 Login
             </v-btn>
-        </v-row>
-        <v-row class="text-center">
-            <v-col cols="12">
-                <v-img :src="require('../assets/logo.svg')" class="my-3" contain height="200" />
-            </v-col>
         </v-row>
     </v-container>
 </template>
