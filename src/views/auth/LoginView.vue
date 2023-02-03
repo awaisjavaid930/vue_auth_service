@@ -26,7 +26,6 @@
 </template>
 <script>
 import { useAuthStore } from '@/store/auth';
-
 export default {
     name: 'LoginView',
     data:() => ({
@@ -39,7 +38,7 @@ export default {
         login()
         {
             const userAuth = useAuthStore();
-            userAuth.saveRecord('login' , this.formData)
+            userAuth.setLogin('login' , this.formData)
                 .then(response => {
                     console.log(response)
                     this.$router.push('/about')

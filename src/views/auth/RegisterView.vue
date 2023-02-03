@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { useAuthStore } from '@/store/auth';
+
 export default {
     name: 'RegisterView',
     data: () => ({
@@ -37,7 +39,16 @@ export default {
     }),
     methods: {
         register() {
-            console.log(this.formData)
+            let userAuth = useAuthStore();
+            userAuth.storeRecord('register' ,this.formData)
+                .then(response => {
+                    if (response.data == 'record saved!') {
+                        this.$router.push('/login')
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         },
     },
 }

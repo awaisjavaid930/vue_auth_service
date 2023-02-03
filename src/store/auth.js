@@ -26,12 +26,23 @@ export const useAuthStore = defineStore('userAuth', {
             })
     },
         
-        async saveRecord(url, data)
+        async setLogin(url, data)
         {
             return  await axios.post(process.env.VUE_APP_API_URL+'/'+url , data )
                 .then(response => {
                     this.token = response.data.data.token ;
                     localStorage.setItem('token',  response.data.data.token)
+                    return  Promise.resolve(response.data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        
+        async storeRecord(url, data)
+        {
+            return  await axios.post(process.env.VUE_APP_API_URL+'/'+url , data )
+                .then(response => {
                     return  Promise.resolve(response.data)
                 })
                 .catch(error => {
